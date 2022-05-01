@@ -1,3 +1,11 @@
 {
-    
+    "extensionName": {
+        "message": "YouTube Embed watcher"
+    },
+    "extensionDescription": {
+        "message": "Open a YouTube video as an Embed in a new tab to avoid ads and other distractions"
+    },
+    "contextMenuEmbed": {
+        "message": "Open as Embed"
+    }
 }

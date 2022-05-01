@@ -5,8 +5,25 @@ function watchUrlToId(url) {
     }
     return url.searchParams.get("v");
 }
+/**
+  * Get the play/pause button and click it to pause the active video
+  */
+function pause(tab) {
+    // This is just a placeholder for now.
+    // In the future the video of tab should be paused
+    return
+}
+
 function createNewEmbedTab(activeTab, url) {
     activeTab = activeTab[0];
+    var isMuted = false;
+    if (activeTab.mutedInfo) {
+        isMuted = activeTab.mutedInfo.muted;
+    }
+    // If the video in the current tab is audible playing, hit k to pause it.
+    if (activeTab.audible && !isMuted) {
+        pause(activeTab);
+    }
     if (!url) {
         url = activeTab.url;
     }
@@ -36,11 +53,16 @@ function handleToolbar() {
         .then(createNewEmbedTab)
         .catch(alert);
 }
+function handleContext(obj, tab) {
+    createNewEmbedTab([tab], obj.linkUrl);
+}
 
 // Handle Action in Toolbar
-browser.browserAction.onClicked.addListener(handleToolbar);
+browser.pageAction.onClicked.addListener(handleToolbar);
 // Handle Action on Rightclick
 browser.contextMenus.create({
-    id: "Open in an embed",
-    title:
-})
+    id: "context-embed",
+    title: browser.i18n.getMessage("contextMenuEmbed"),
+    contexts: ["link"],
+}, () => {});
+browser.contextMenus.onClicked.addListener(handleContext);
