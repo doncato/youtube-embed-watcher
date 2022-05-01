@@ -1,0 +1,32 @@
+{
+    "manifest_version": 2,
+    "author": "doncato",
+    "name": "youtube-embed-watcher",
+    "version": "1.0",
+    "homepage_url": "https://github.com/doncato/youtube-embed-watcher",
+    "description": "Open a YouTube video as an embed in a new tab to avoid ads and other distractions",
+    "default_locale": "en",
+    "icons": {
+        "48": "icons/yt-ew-48.png",
+        "96": "icons/yt-ew-96.png"
+    },
+
+    "browser_action": {
+        "default_icon": "icons/yt-ew-32.png",
+        "default_title": "Open as Embed"
+    },
+
+    "background": {
+        "scripts": [
+            "background.js"
+        ]
+    },
+    "options_ui": {
+        "open_in_tab": true,
+        "page": "pages/about.html"
+    },
+    "permissions": [
+        "activeTab",
+        "tabs"
+    ]
+}
