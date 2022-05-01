@@ -64,5 +64,6 @@ browser.contextMenus.create({
     id: "context-embed",
     title: browser.i18n.getMessage("contextMenuEmbed"),
     contexts: ["link"],
+    documentUrlPatterns: ["*://*.youtube.com/*"]
 }, () => {});
 browser.contextMenus.onClicked.addListener(handleContext);
