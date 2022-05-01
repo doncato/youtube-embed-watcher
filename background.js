@@ -5,18 +5,12 @@ function watchUrlToId(url) {
     }
     return url.searchParams.get("v");
 }
-
-function info(txt) {
-    console.log(txt);
-}
-function err(txt) {
-    alert (txt);
-    console.error(txt);
-}
-
-function createNewEmbedTab(activeTab) {
+function createNewEmbedTab(activeTab, url) {
     activeTab = activeTab[0];
-    let videoId = watchUrlToId(activeTab.url);
+    if (!url) {
+        url = activeTab.url;
+    }
+    let videoId = watchUrlToId(url);
     if (!videoId) {
         throw "Current URL is not valid."
     }
@@ -28,10 +22,25 @@ function createNewEmbedTab(activeTab) {
     newTab.then(info, err);
 }
 
-function handleEmbed() {
+function info(txt) {
+    console.log(txt);
+}
+function err(txt) {
+    alert (txt);
+    console.error(txt);
+}
+
+
+function handleToolbar() {
     browser.tabs.query({active: true, currentWindow: true})
         .then(createNewEmbedTab)
         .catch(alert);
 }
 
-browser.browserAction.onClicked.addListener(handleEmbed);
+// Handle Action in Toolbar
+browser.browserAction.onClicked.addListener(handleToolbar);
+// Handle Action on Rightclick
+browser.contextMenus.create({
+    id: "Open in an embed",
+    title:
+})
