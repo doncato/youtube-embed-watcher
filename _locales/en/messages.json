@@ -3,7 +3,7 @@
         "message": "YouTube Embed watcher"
     },
     "extensionDescription": {
-        "message": "Open a YouTube video as an Embed in a new tab to avoid ads and other distractions"
+        "message": "Open a YouTube video as an Embed in a new tab to avoid ads and other distractions\nThe addon works with the 'embed video' feature of YouTube by putting it in a new tab"
     },
     "contextMenuEmbed": {
         "message": "Open as Embed"
